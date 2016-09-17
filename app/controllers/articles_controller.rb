@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
   end
 
   def create
@@ -19,7 +20,7 @@ class ArticlesController < ApplicationController
 
     @article.save
 
-    redirect_to articles_path
+    redirect articles_path
   end
 
   def update
