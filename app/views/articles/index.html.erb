@@ -1,22 +1,24 @@
-<h1>List of all articles</h1>
+<div class="container">
+  <h1>List of all articles</h1>
 
-<%= link_to 'Add New', new_article_path %>
+  <%= link_to 'Add New', new_article_path %>
 
-<div id="article_list">
-  <% @articles.each do |article| %>
-    <div class="article_block">
-      <div class="article_title">
-        <h3><%= link_to article.title, article_path(article) %></h3>
+  <div id="article_list">
+    <% @articles.each do |article| %>
+      <div class="article_block">
+        <div class="article_title">
+          <h3><%= link_to article.title, article_path(article) %></h3>
+        </div>
+        <div class="article_title">
+          <p>
+            <%= article.body %>
+          </p>
+        </div>
+        <div class="article_options" >
+          <%= link_to 'Edit', edit_article_path(article) %> |
+          <%= link_to 'Delete', article_path(article), method: :delete %>
+        </div>
       </div>
-      <div class="article_title">
-        <p>
-          <%= article.body %>
-        </p>
-      </div>
-      <div class="article_options" >
-        <%= link_to 'Edit', edit_article_path(article) %> |
-        <%= link_to 'Delete', article_path(article), method: :delete %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
