@@ -1,0 +1,13 @@
+<%= form_for @article do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %></br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, {class: "form-control", id: "content-editor"} %></br>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save</button>
+<% end %>
