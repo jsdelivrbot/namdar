@@ -5,6 +5,29 @@ textarea {
   resize: none;
 }
 
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
 #content-editor {
   height: 400px;
+}
+
+.container {
+  max-width: 970px;
+}
+
+.article-title > h2 {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.article-body {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.comments-section {
+  margin-top: 30px;
 }

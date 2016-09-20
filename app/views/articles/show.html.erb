@@ -1,12 +1,23 @@
-<h1><%= @article.title %></h1>
-<p>
-  <%= @article.body %>
-</p>
+<div class="container article-section">
+  <div class="article-title">
+    <h1><%= @article.title %></h1>
+  </div>
+  <div class="article-body">
+    <% paragraphs = @article.body.split(/\r/) %>
+    <% paragraphs.each do |p| %>
+      <p>
+        <%= p %>
+      </p>
+    <% end %>
+  </div>
 
-<%= link_to 'Home', articles_path %> |
-<%= link_to 'Edit', edit_article_path %> |
-<%= link_to 'Delete', article_path, method: :delete %>
-
-<%= render partial: "comments/comments" %>
-
-<%= render partial: "comments/new" %>
+  <div class="article-control-panel">
+    <%= link_to 'Home', articles_path %> |
+    <%= link_to 'Edit', edit_article_path %> |
+    <%= link_to 'Delete', article_path, method: :delete %>
+  </div>
+</div>
+<div class="container comments-section">
+  <%= render partial: "comments/comments" %>
+  <%= render partial: "comments/new" %>
+</div>
