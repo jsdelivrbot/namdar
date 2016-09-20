@@ -3,10 +3,14 @@
   <% @article.comments.order(created_at: :desc).each do |c| %>
     <div class="panel panel-default">
       <div class="panel-heading comment-author">
-        <h3 class="panel-title"><%= c.commenter %></h3>
+        <%= c.commenter %>
       </div>
       <div class="panel-body comment-body">
         <%= c.comment_text %>
+
+        <div class="text-right">
+          <%= link_to 'Delete', article_path + '/comments/' + c.id.to_s, method: :delete %>
+        </div>
       </div>
     </div>
   <% end %>
