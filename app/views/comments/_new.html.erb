@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="panel-body new-comment-panel">
-    <%= form_for([@article, @article.comment.build]) do |f| %>
+    <%= form_for([@article, @article.comments.build]) do |f| %>
       <div class="form-group">
         <%= f.text_field :commenter, {placeholder: "Commenter", class: "form-control"} %>
       </div>
