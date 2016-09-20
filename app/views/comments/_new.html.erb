@@ -1,9 +1,19 @@
-<%= form_for([@article, @article.comment.build]) do |f| %>
-  <%= f.label :commenter %>
-  <%= f.text_field :commenter %></br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <strong>New Comment</strong>
+    </div>
+  </div>
+  <div class="panel-body new-comment-panel">
+    <%= form_for([@article, @article.comment.build]) do |f| %>
+      <div class="form-group">
+        <%= f.text_field :commenter, {placeholder: "Commenter", class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :comment_text, {id: "comment-editor", placeholder: "Comment", class: "form-control"} %>
+      </div>
 
-  <%= f.label :comment_text %>
-  <%= f.text_area :comment_text %></br>
-
-  <%= f.submit %>
-<% end %>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    <% end %>
+  </div>
+</div>

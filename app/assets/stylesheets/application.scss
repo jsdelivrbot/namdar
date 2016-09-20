@@ -5,19 +5,27 @@ textarea {
   resize: none;
 }
 
-body {
+#content-editor {
+  height: 400px;
+}
+
+#comment-editor {
+  height: 100px;
+}
+
+.article-section {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-#content-editor {
-  height: 400px;
+.comments-section {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .container {
   max-width: 970px;
 }
 
-.article-title > h2 {
+.article-title {
   margin-top: 60px;
   margin-bottom: 30px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -26,6 +34,10 @@ body {
 .article-body {
   font-size: 18px;
   line-height: 1.5;
+}
+
+.comment-author{
+  font-weight: bold;
 }
 
 .comments-section {
