@@ -9,7 +9,7 @@
         <%= c.comment_text %>
 
         <div class="text-right">
-          <%= link_to 'Delete', article_path + '/comments/' + c.id.to_s, method: :delete %>
+          <%= link_to 'Delete', [c.article, c], method: :delete %>
         </div>
       </div>
     </div>
