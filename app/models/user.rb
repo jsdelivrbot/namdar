@@ -12,4 +12,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   has_secure_password
+
+  def admin?
+    group == 'admin'
+  end
 end
