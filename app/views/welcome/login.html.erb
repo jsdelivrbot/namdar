@@ -5,6 +5,11 @@ Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort
   <div class="container">
     <span class="glyphicon glyphicon-user"></span>
     <h2>Login</h2>
+    <% flash.each do |key, message| %>
+      <div class="error-message">
+        <%= message %></br>
+      </div>
+    <% end %>
     <div class="box">
       <form action="login" method="post">
         <input type="text" name = "username" placeholder="username">
