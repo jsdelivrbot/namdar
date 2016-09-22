@@ -1,7 +1,15 @@
 <div class="container">
   <h1><%= t("blog_name") %></h1>
 
-  <%= link_to 'Add New', new_article_path %>
+  <% if admin? %>
+    <%= link_to 'Add New', new_article_path %> |
+  <% end %>
+
+  <% if logged_in? %>
+    <%= link_to 'Log Out', logout_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Login', login_path %>
+  <% end %>
 
   <div id="article_list">
     <% @articles.each do |article| %>
@@ -18,8 +26,10 @@
           <% end %>
         </div>
         <div class="article_options" >
-          <%= link_to 'Edit', edit_article_path(article) %> |
-          <%= link_to 'Delete', article_path(article), method: :delete %>
+          <% if admin? %>
+            <%= link_to 'Edit', edit_article_path(article) %> |
+            <%= link_to 'Delete', article_path(article), method: :delete %>
+          <% end %>
         </div>
       </div>
     <% end %>
