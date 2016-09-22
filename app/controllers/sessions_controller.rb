@@ -8,13 +8,14 @@ class SessionsController < ApplicationController
     user = u.authenticate(params[:session][:password]) if u
 
     if user then login_user(user)
-    else login_fail end
+    else login_fail
+    end
   end
 
   def destroy
     session.delete(:user_id)
     @current_user = nil
-    
+
     redirect_to articles_path
   end
 
