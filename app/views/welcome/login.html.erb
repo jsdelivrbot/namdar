@@ -1,0 +1,17 @@
+<!--
+Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort=views&timeframe=ever&offset=461
+-->
+<div class="jumbotron">
+  <div class="container">
+    <span class="glyphicon glyphicon-user"></span>
+    <h2>Login</h2>
+    <div class="box">
+      <form action="login" method="post">
+        <input type="text" placeholder="username">
+	      <input type="password" placeholder="password">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	      <button class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
+      </form>
+    </div>
+  </div>
+</div>
