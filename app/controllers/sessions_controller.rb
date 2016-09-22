@@ -7,11 +7,8 @@ class SessionsController < ApplicationController
     u = User.find_by(username: params[:session][:username].downcase)
     user = u.authenticate(params[:session][:password]) if u
 
-    if user
-      login_user
-    else
-      login_fail
-    end
+    if user then login_user(user)
+    else login_fail end
   end
 
   def destroy
@@ -21,7 +18,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def login_user
+  def login_user(user)
     session[:user_id] = user.id
     flash[:sucess] = "Logged in as #{user.username}!"
 
