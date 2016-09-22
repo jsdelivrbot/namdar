@@ -1,0 +1,22 @@
+<!--
+Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort=views&timeframe=ever&offset=461
+-->
+<div class="jumbotron">
+  <div class="container">
+    <span class="glyphicon glyphicon-user"></span>
+    <h2>Login</h2>
+    <% if flash[:danger] %>
+      <div class="error-message">
+        <%= flash[:danger] %></br>
+      </div>
+    <% end %>
+    <div class="box">
+      <%= form_for :session do |f| %>
+        <%= f.text_field :username, { placeholder: "username" } %>
+        <%= f.password_field :password, { placeholder: "password" } %>
+
+        <button class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
+      <% end %>
+    </div>
+  </div>
+</div>
