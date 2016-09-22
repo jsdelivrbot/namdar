@@ -7,7 +7,8 @@ class WelcomeController < ApplicationController
   end
 
   def authenticate
-    user = User.authenticate(params.require(:username))
+    u = User.find_by(:username => params.require(:username))
+    user = u.authenticate(params.require(:password)) if u
 
     if user
       session[:user_id] = user.id
@@ -16,7 +17,7 @@ class WelcomeController < ApplicationController
       redirect_to articles_path
     else
       session[:user_group] = 'user'
-      redirect_to 'login'
+      redirect_to :login
     end
   end
 end

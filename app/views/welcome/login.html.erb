@@ -7,8 +7,8 @@ Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort
     <h2>Login</h2>
     <div class="box">
       <form action="login" method="post">
-        <input type="text" placeholder="username">
-	      <input type="password" placeholder="password">
+        <input type="text" name = "username" placeholder="username">
+	      <input type="password" name="password" placeholder="password">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	      <button class="btn btn-default full-width"><span class="glyphicon glyphicon-ok"></span></button>
       </form>
