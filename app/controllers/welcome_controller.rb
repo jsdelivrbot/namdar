@@ -7,6 +7,16 @@ class WelcomeController < ApplicationController
   end
 
   def authenticate
-    redirect_to articles_path
+    user = User.authenticate(params.require(:username))
+
+    if user
+      session[:user_id] = user.id
+      session[:user_group] = user.group
+
+      redirect_to articles_path
+    else
+      session[:user_group] = 'user'
+      redirect_to 'login'
+    end
   end
 end
