@@ -1,0 +1,51 @@
+AllCops:
+  Include:
+    - bin/*
+    - config.ru
+    - Rakefile
+  Exclude:
+    - db/schema.rb
+
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - db/migrate/*
+
+Metrics/ClassLength:
+  Exclude:
+    - test/**/*
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - config/initializers/*
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - db/migrate/*
+    - test/**/*
+
+Metrics/ParameterLists:
+  Exclude:
+    - test/**/*
+
+Rails:
+  Enabled: true
+
+Rails/OutputSafety:
+  Exclude:
+    - app/models/**/*
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/FormatString:
+  EnforcedStyle: sprintf
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
