@@ -8,9 +8,11 @@
       <div class="panel-body comment-body">
         <%= c.comment_text %>
 
-        <div class="text-right">
-          <%= link_to 'Delete', [c.article, c], method: :delete %>
-        </div>
+        <% if session[:user_group] == 'admin' %>
+          <div class="text-right">
+            <%= link_to 'Delete', [c.article, c], method: :delete %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>

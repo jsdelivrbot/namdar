@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= t("blog_name") %></h1>
 
-  <%= link_to 'Add New', new_article_path %>
+  <%= link_to 'Add New', new_article_path if session[:user_group] == 'admin' %>
 
   <div id="article_list">
     <% @articles.each do |article| %>
@@ -18,8 +18,10 @@
           <% end %>
         </div>
         <div class="article_options" >
-          <%= link_to 'Edit', edit_article_path(article) %> |
-          <%= link_to 'Delete', article_path(article), method: :delete %>
+          <% if session[:user_group] == 'admin' %>
+            <%= link_to 'Edit', edit_article_path(article) %> |
+            <%= link_to 'Delete', article_path(article), method: :delete %>
+          <% end %>
         </div>
       </div>
     <% end %>

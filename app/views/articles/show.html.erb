@@ -12,9 +12,11 @@
   </div>
 
   <div class="article-control-panel">
-    <%= link_to 'Home', articles_path %> |
-    <%= link_to 'Edit', edit_article_path %> |
-    <%= link_to 'Delete', article_path, method: :delete %>
+    <%= link_to 'Home', articles_path %>
+    <% if session[:user_group] == 'admin' %>
+      | <%= link_to 'Edit', edit_article_path %>
+      | <%= link_to 'Delete', article_path, method: :delete %>
+    <% end %>
   </div>
 </div>
 <div class="container comments-section">
