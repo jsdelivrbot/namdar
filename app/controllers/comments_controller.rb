@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    return unless session[:user_group] == 'admin'
+
     @article = Article.find(params[:article_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
