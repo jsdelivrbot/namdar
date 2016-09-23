@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922182509) do
+ActiveRecord::Schema.define(version: 20160923024710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20160922182509) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "articles_tags", id: false, force: :cascade do |t|
+    t.integer "articles_id"
+    t.integer "tags_id"
+    t.index ["articles_id"], name: "index_articles_tags_on_articles_id", using: :btree
+    t.index ["tags_id"], name: "index_articles_tags_on_tags_id", using: :btree
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string   "commenter"
     t.text     "comment_text"
@@ -29,6 +36,13 @@ ActiveRecord::Schema.define(version: 20160922182509) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       limit: 30
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
