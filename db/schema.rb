@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20160923024710) do
   end
 
   create_table "articles_tags", id: false, force: :cascade do |t|
-    t.integer "articles_id"
-    t.integer "tags_id"
-    t.index ["articles_id"], name: "index_articles_tags_on_articles_id", using: :btree
-    t.index ["tags_id"], name: "index_articles_tags_on_tags_id", using: :btree
+    t.integer "article_id"
+    t.integer "tag_id"
+    t.index ["article_id"], name: "index_articles_tags_on_article_id", using: :btree
+    t.index ["tag_id"], name: "index_articles_tags_on_tag_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
