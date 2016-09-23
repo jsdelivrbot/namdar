@@ -1,0 +1,6 @@
+<div class="tags-list">
+  Tags:
+  <% article.tags.each do |t| %>
+    <span class="tag-span"><%= link_to t.name, tag_path(t) %></span>
+  <% end %>
+</div>

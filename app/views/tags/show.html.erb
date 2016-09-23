@@ -1,0 +1,13 @@
+<div class="container">
+  <h2><%= @tag.name %></h2>
+
+  <div id="article-list">
+    <% @tag.articles.each do |article| %>
+      <div class="article-block">
+        <div class="article-title">
+          <h4><%= link_to article.title, article_path(article) %></h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
