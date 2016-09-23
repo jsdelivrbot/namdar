@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :tags
+
   root 'welcome#index'
 
   get 'login' => 'sessions#new'

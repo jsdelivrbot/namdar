@@ -1,6 +1,7 @@
 <div class="container article-block">
   <div class="article-title">
     <h1><%= @article.title %></h1>
+    <%= render partial: 'tags/list', locals: {article: @article} %>
   </div>
   <div class="article-body">
     <% paragraphs = @article.body.split(/\r/) %>
