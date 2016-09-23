@@ -1,4 +1,4 @@
-<div class="container article-section">
+<div class="container article-block">
   <div class="article-title">
     <h1><%= @article.title %></h1>
   </div>
@@ -12,9 +12,8 @@
   </div>
 
   <div class="article-control-panel">
-    <%= link_to 'Home', articles_path %>
     <% if admin? %>
-      | <%= link_to 'Edit', edit_article_path %>
+      <%= link_to 'Edit', edit_article_path %>
       | <%= link_to 'Delete', article_path, method: :delete %>
     <% end %>
   </div>

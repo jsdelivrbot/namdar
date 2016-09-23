@@ -1,23 +1,13 @@
 <div class="container">
   <h1><%= t("blog_name") %></h1>
 
-  <% if admin? %>
-    <%= link_to 'Add New', new_article_path %> |
-  <% end %>
-
-  <% if logged_in? %>
-    <%= link_to 'Log Out', logout_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Login', login_path %>
-  <% end %>
-
-  <div id="article_list">
+  <div id="article-list">
     <% @articles.each do |article| %>
-      <div class="article_block">
-        <div class="article_title">
+      <div class="article-block">
+        <div class="article-title">
           <h3><%= link_to article.title, article_path(article) %></h3>
         </div>
-        <div class="article_title">
+        <div class="article-body">
           <% paragraphs = article.body.split(/\r/) %>
           <% paragraphs.each do |p| %>
             <p>
@@ -25,7 +15,7 @@
             </p>
           <% end %>
         </div>
-        <div class="article_options" >
+        <div class="article-options" >
           <% if admin? %>
             <%= link_to 'Edit', edit_article_path(article) %> |
             <%= link_to 'Delete', article_path(article), method: :delete %>
