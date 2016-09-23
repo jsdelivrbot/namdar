@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'tags/new'
-
   resources :articles do
     resources :comments
   end

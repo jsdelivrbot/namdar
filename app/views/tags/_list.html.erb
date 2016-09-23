@@ -1,6 +1,32 @@
 <div class="tags-list">
   Tags:
   <% article.tags.each do |t| %>
-    <span class="tag-span"><%= link_to t.name, tag_path(t) %></span>
+    <span class="glyphicon glyphicon-tag"></span><%= link_to t.name, tag_path(t) %> 
   <% end %>
+  <a href="#" data-toggle="modal" data-target="#tags-modal">
+    <span class="glyphicon glyphicon-plus"></span>
+  </a>
 </div>
+
+<div id="tags-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Manage Tags</h4>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <% article.tags.each do |t| %>
+            <li><%= t.name %></li>
+          <% end %>
+        </ul>
+        <%= form_for Tag.new do |f| %>
+          <input type="hidden" name="article_id" value="<%= article.id %>"/>
+          <%= f.text_field :name, { placeholder: 'tag', class: 'form-control'} %>
+          <%= f.button :add, { class: 'btn btn-primary' } %>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

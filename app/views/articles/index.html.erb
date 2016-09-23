@@ -7,7 +7,6 @@
         <div class="article-title">
           <h3><%= link_to article.title, article_path(article) %></h3>
         </div>
-        <%= render partial: 'tags/list', locals: {article: article} %>
         <div class="article-body">
           <% paragraphs = article.body.split(/\r/) %>
           <% paragraphs.each do |p| %>
