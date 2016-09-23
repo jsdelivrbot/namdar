@@ -16,7 +16,7 @@ class TagsController < ApplicationController
       tag.save
     end
 
-    article.tags << tag
+    article.tags << tag unless article.tags.include? tag
     redirect_to article_path(params[:article_id])
   end
 
