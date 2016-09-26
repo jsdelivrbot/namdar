@@ -19,6 +19,8 @@ class ArticlesController < ApplicationController
     @article = Article.new(params.require(:article).permit(:title, :body))
     @article.save
 
+    generate_tags(@article.body)
+
     redirect_to articles_path
   end
 

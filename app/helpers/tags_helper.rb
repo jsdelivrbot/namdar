@@ -13,4 +13,8 @@ module TagsHelper
 
     tag
   end
+
+  def generate_tags(article)
+    topics = get_topics_from_api(article) # Get hash of topics from TextRazor api
+  end
 end
