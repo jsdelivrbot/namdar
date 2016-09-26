@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def login_user(user)
     session[:user_id] = user.id
-    flash[:sucess] = "Logged in as #{user.username}!"
+    flash[:success] = "Logged in as #{user.username}!"
 
     redirect_to articles_path
   end
