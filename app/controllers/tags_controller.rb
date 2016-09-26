@@ -8,19 +8,13 @@ class TagsController < ApplicationController
   end
 
   def create
-    tag = Tag.find_by(params.require(:tag).permit(:name))
+    tag = find_or_initialize_by_name(params[:tag][:name])
     article = Article.find(params[:article_id])
-
-    if tag == nil
-      tag = Tag.new(params.require(:tag).permit(:name))
-      tag.save
-    end
 
     article.tags << tag unless article.tags.include? tag
     redirect_to article_path(params[:article_id])
   end
 
   def destroy
-
   end
 end
