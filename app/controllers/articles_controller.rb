@@ -2,7 +2,7 @@ require 'textrazor'
 
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.all.order(:created_at).reverse_order
   end
 
   def show
