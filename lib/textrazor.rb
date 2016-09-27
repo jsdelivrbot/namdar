@@ -1,11 +1,13 @@
-module Textrazor
-  require 'net/http'
-  require 'json'
+require 'net/http'
+require 'json'
 
+module Textrazor
   class Client
-    API_KEY = Rails.application.secrets.textrazor_api_key
-    REQUEST_HEADER = {'x-textrazor-key' => API_KEY}
     ENDPOINT = 'http://api.textrazor.com'
+
+    def initialize(args)
+      @request_header = {'x-textrazor-key' => args[:key]}
+    end
 
     def get_topics(article_body)
       params = 'extractors=topics&text=' + article_body
@@ -22,7 +24,7 @@ module Textrazor
       uri = URI.parse(ENDPOINT)
       http = Net::HTTP.new(uri.host, uri.port)
 
-      response = http.post(uri, params, REQUEST_HEADER)
+      response = http.post(uri, params, @request_header)
 
       JSON.parse(response.body)
     end
