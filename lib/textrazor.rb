@@ -7,11 +7,11 @@ module Textrazor
     REQUEST_HEADER = {'x-textrazor-key' => API_KEY}
     ENDPOINT = 'http://api.textrazor.com'
 
-    @last_response
-
     def get_topics(article_body)
       params = 'extractors=topics&text=' + article_body
       response = do_request params
+
+      return [] unless response["ok"]
 
       response["response"]["topics"]
     end
