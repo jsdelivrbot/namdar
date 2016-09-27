@@ -1,7 +1,7 @@
 <div class="tags-list">
   Tags:
   <% article.tags.each do |t| %>
-    <span class="glyphicon glyphicon-tag"></span><%= link_to t.name, tag_path(t) %> 
+    <span class="glyphicon glyphicon-tag"></span><%= link_to t.name, tag_path(t) %>
   <% end %>
   <a href="#" data-toggle="modal" data-target="#tags-modal">
     <span class="glyphicon glyphicon-plus"></span>
@@ -16,15 +16,32 @@
         <h4 class="modal-title">Manage Tags</h4>
       </div>
       <div class="modal-body">
-        <ul>
-          <% article.tags.each do |t| %>
-            <li><%= t.name %></li>
-          <% end %>
-        </ul>
         <%= form_for Tag.new do |f| %>
           <input type="hidden" name="article_id" value="<%= article.id %>"/>
-          <%= f.text_field :name, { placeholder: 'tag', class: 'form-control'} %>
-          <%= f.button :add, { class: 'btn btn-primary' } %>
+          <table class="table table-hover">
+            <tbody>
+                <% article.tags.each do |t| %>
+                  <tr>
+                    <td>
+                      <%= t.name %>
+                    </td>
+                    <td>
+                      <%= link_to article_remove_tag_path(article,t) do %>
+                        <span class="glyphicon glyphicon-remove"></span>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+                <tr>
+                  <td>
+                    <%= f.text_field :name, { placeholder: 'tag', class: 'form-control'} %>
+                  </td>
+                  <td>
+                    <%= f.button :add, { class: 'btn btn-primary' } %>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
         <% end %>
       </div>
     </div><!-- /.modal-content -->

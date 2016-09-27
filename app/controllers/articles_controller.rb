@@ -40,6 +40,14 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def remove_tag
+    article = Article.find(params[:article_id])
+    tag = Tag.find(params[:id])
+    article.remove_tag(tag)
+
+    redirect_to article_path(article)
+  end
+
   private
 
   def generate_tags(article)
