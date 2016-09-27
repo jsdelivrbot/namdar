@@ -40,11 +40,13 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  private
+
   def generate_tags(article)
     topics = Textrazor::Client.new.get_topics article.body
     topics.first(5).each do |topic|
       tag = find_or_initialize_by_name topic["label"]
-      article.tags << tag
+      article.add_tag(tag)
     end
   end
 end
