@@ -5,7 +5,7 @@ module Concerns
 
       if tag == nil
         tag = Tag.new(name: name)
-        tag.save
+        tag = tag.save ? tag : nil
       end
 
       tag
