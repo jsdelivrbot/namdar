@@ -10,8 +10,8 @@ class TagsController < ApplicationController
   def create
     tag = find_or_initialize_by_name(params[:tag][:name])
     article = Article.find(params[:article_id])
+    article.add_tag(tag)
 
-    article.tags << tag unless article.tags.include? tag
     redirect_to article_path(params[:article_id])
   end
 
