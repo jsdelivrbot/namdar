@@ -56,6 +56,8 @@ class ArticlesController < ApplicationController
 
   def generate_tags(article)
     topics = Textrazor::Client.new(key: Rails.application.secrets.textrazor_api_key).get_topics article.body
+    return if topics == nil
+
     topics.first(5).each do |topic|
       tag = find_or_initialize_by_name topic["label"]
       article.add_tag(tag)

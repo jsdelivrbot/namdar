@@ -13,7 +13,7 @@ module Textrazor
       params = 'extractors=topics&text=' + article_body
       response = do_request params
 
-      return [] unless response["ok"]
+      return [] unless response["ok"] and response["response"].member? "topics"
 
       response["response"]["topics"]
     end
