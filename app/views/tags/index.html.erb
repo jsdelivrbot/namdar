@@ -4,6 +4,7 @@
     <% @tags.each do |tag| %>
       <li class="list-group-item">
         <%= link_to tag.name, tag_path(tag) %>
+        <span class="badge"><%= tag.count %></span>
       </li>
     <% end %>
   </ul>
