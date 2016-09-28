@@ -1,0 +1,10 @@
+<div class="container">
+  <h2><span class="glyphicon glyphicon-tags"></span>   Tags</h2>
+  <ul class="list-group">
+    <% @tags.each do |tag| %>
+      <li class="list-group-item">
+        <%= link_to tag.name, tag_path(tag) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
