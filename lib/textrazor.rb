@@ -10,6 +10,8 @@ module Textrazor
     end
 
     def get_topics(article_body)
+      return [] if article_body.length < 200
+
       params = 'extractors=topics&text=' + article_body
       response = do_request params
 
