@@ -4,9 +4,10 @@
     <span class="glyphicon glyphicon-tag"></span><%= link_to t.name, tag_path(t) %>
   <% end %>
   <% if admin? %>
-    <button data-toggle="modal" data-target="#tags-modal">
+    <a data-toggle="modal" data-target="#tags-modal" style="color:black">
       <span class="glyphicon glyphicon-cog"></span>
-    </button>
+      Edit
+    </a>
     <div id="tags-modal" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
