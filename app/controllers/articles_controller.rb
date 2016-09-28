@@ -1,6 +1,8 @@
 require 'textrazor'
 
 class ArticlesController < ApplicationController
+  before_action :require_admin, except: [:index, :show]
+
   def index
     @articles = Article.all.order(:created_at).reverse_order
   end

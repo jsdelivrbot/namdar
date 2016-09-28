@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  before_action :require_admin, only: [:create, :destroy]
+
   def index
     @tags = Tag.all.order(:count).reverse_order
   end
@@ -16,5 +18,6 @@ class TagsController < ApplicationController
   end
 
   def destroy
+    #TODO
   end
 end

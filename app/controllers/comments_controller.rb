@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :require_admin, except: [:create]
+
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
@@ -7,8 +9,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    return unless session[:user_group] == 'admin'
-
     @article = Article.find(params[:article_id])
     @comment = Comment.find(params[:id])
     @comment.destroy

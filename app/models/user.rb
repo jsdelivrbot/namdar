@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   before_save do
+    username.downcase!
     email.downcase!
-    self.group = 'user' unless group == 'admin'
+    group = 'user' unless group == 'admin'
   end
 
   validates :username, presence: true, length: { maximum: 40 }
