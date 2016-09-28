@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :tags
 
-  root 'welcome#index'
+  root 'articles#index'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
