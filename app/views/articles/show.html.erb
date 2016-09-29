@@ -3,14 +3,7 @@
     <h1><%= @article.title %></h1>
     <%= render partial: 'tags/list', locals: {article: @article} %>
   </div>
-  <div class="article-body">
-    <% paragraphs = @article.body.split(/\r/) %>
-    <% paragraphs.each do |p| %>
-      <p>
-        <%= p %>
-      </p>
-    <% end %>
-  </div>
+  <%= render partial: 'body', locals: {article: @article} %>
 
   <div class="article-control-panel">
     <% if admin? %>
