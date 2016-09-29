@@ -7,14 +7,7 @@
         <div class="article-title">
           <h3><%= link_to article.title, article_path(article) %></h3>
         </div>
-        <div class="article-body">
-          <% paragraphs = article.body.split(/\r/) %>
-          <% paragraphs.each do |p| %>
-            <p>
-              <%= p %>
-            </p>
-          <% end %>
-        </div>
+        <%= render partial: "body", locals: {article: article} %>
         <div class="article-options" >
           <% if admin? %>
             <%= link_to 'Edit', edit_article_path(article) %> |
