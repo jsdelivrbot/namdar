@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params.require(:article).permit(:title, :body))
+    @article = Article.new(params.require(:article).permit(:title, :body, :markdown))
     @article.save
 
     generate_tags @article
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    @article.update(params.require(:article).permit(:title, :body))
+    @article.update(params.require(:article).permit(:title, :body, :markdown))
 
     generate_tags @article
 

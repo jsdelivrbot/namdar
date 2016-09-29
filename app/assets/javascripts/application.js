@@ -12,6 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+$(document).ready(function(){
+  $("#md-button").click(function(){
+      var md = $("#article_markdown");
+      var value = md.attr("value") == "true" ? false : true;
+      md.attr("value", value);
+      $(this).attr("class", value ? "btn btn-success" : "btn btn-default");
+  });
+});

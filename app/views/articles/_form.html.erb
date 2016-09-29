@@ -1,7 +1,14 @@
 <%= form_for @article do |f| %>
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %></br>
+    <div class="input-group">
+      <%= f.text_field :title, placeholder: "Title", class: "form-control" %></br>
+      <span class="input-group-btn">
+        <%= f.button id:"md-button", type: "button", class: "btn btn-success" do %>
+          Markdown
+        <% end %>
+      </span>
+    </div>
+    <%= f.hidden_field :markdown, value: "true" %>
   </div>
 
   <div class="form-group">

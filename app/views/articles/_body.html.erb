@@ -1,13 +1,13 @@
 <div class="article-body">
-  <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(filter_html: true), autolink: true, tables: true) %>
-  <%= raw markdown.render(article.body) %>
-
-  <!-- <div class="article-body">
+  <% if article.markdown %>
+    <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(filter_html: true), autolink: true, tables: true) %>
+    <%= raw markdown.render(article.body) %>
+  <% else %>
     <% paragraphs = article.body.split(/\r/) %>
     <% paragraphs.each do |p| %>
       <p>
         <%= p %>
       </p>
     <% end %>
-  </div> -->
+  <% end %>
 </div>
