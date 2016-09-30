@@ -1,6 +1,6 @@
 <div class="article-body">
   <% if article.markdown %>
-    <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(filter_html: true), autolink: true, tables: true) %>
+    <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(filter_html: true, prettify: true), autolink: true, tables: true, fenced_code_blocks: true) %>
     <%= raw markdown.render(article.body) %>
   <% else %>
     <% paragraphs = article.body.split(/\r/) %>
