@@ -10,7 +10,7 @@ gem 'puma'
 gem 'pry-rails'
 
 gem 'devise'
-gem 'doorkeeper'
+# gem 'doorkeeper'
 gem 'faraday'
 gem 'hashie'
 gem 'oj'
@@ -20,7 +20,8 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
-gem 'simple_form'
+gem 'coffee-rails'
+# gem 'simple_form'
 
 group :production do
   gem 'newrelic_rpm'
