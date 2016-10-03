@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    tag = find_or_initialize_by_name(params[:tag][:name])
+    tag = upsert_tag_by_name(params[:tag][:name])
     article = Article.find(params[:article_id])
     article.add_tag(tag)
 
