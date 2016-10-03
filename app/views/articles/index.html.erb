@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= t("blog_name") %></h1>
+  <h1><%= ENV['BLOG_NAME'] %></h1>
 
   <div id="article-list">
     <% @articles.each do |article| %>
