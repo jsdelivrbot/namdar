@@ -9,15 +9,26 @@ module Textrazor
       @request_header = {'x-textrazor-key' => args[:key]}
     end
 
-    def get_topics(article_body)
-      return [] if article_body.length < 200
+    def topics(text)
+      return [] unless valid? text
 
-      params = 'extractors=topics&text=' + article_body
+      params = 'extractors=topics&text=' + text
       response = do_request params
 
-      return [] unless response["ok"] and response["response"].member? "topics"
+      return [] unless response["ok"] and response["response"]["topics"]
 
       response["response"]["topics"]
+    end
+
+    def entailments(text)
+      return [] unless valid? text
+
+      params = 'extractors=entailments&text=' + text
+      response = do_request params
+
+      return [] unless response["ok"] and response["response"]["entailments"]
+
+      response["response"]["entailments"]
     end
 
     private
@@ -29,6 +40,10 @@ module Textrazor
       response = http.post(uri, params, @request_header)
 
       JSON.parse(response.body)
+    end
+
+    def valid?(text)
+      return text.length > 200
     end
   end
 end

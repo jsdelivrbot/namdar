@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 ruby File.read(File.expand_path('../.ruby-version', __FILE__)).chomp
 
 gem 'dotenv-rails'
+gem 'redcarpet'
+gem 'coffee-rails'
 
 gem 'rails'
 gem 'pg'
@@ -10,7 +12,7 @@ gem 'puma'
 gem 'pry-rails'
 
 gem 'devise'
-gem 'doorkeeper'
+#gem 'doorkeeper'
 gem 'faraday'
 gem 'hashie'
 gem 'oj'
@@ -20,7 +22,7 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
-gem 'simple_form'
+#gem 'simple_form'
 
 group :production do
   gem 'newrelic_rpm'
