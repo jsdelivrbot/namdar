@@ -31,6 +31,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'capistrano' '~>3.6'
   gem 'byebug'
   gem 'rubocop'
   gem 'scss_lint', require: false
