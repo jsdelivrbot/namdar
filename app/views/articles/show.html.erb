@@ -1,11 +1,12 @@
 <div class="container article-block">
   <div class="article-title">
     <h1><%= @article.title %></h1>
-    <%= render partial: 'tags/list', locals: {article: @article} %>
+    Posted at: <%= display_time_created(@article) %> (UTC)
   </div>
   <%= render partial: 'body', locals: {article: @article} %>
 
   <div class="article-control-panel">
+    <%= render partial: 'tags/list', locals: {article: @article} %>
     <% if admin? %>
       <%= link_to 'Edit', edit_article_path %>
       | <%= link_to 'Delete', article_path, method: :delete %>
