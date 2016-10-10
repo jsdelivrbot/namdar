@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
 
   def generate_tags(article)
     topics = Textrazor::Client.new(key: ENV['TEXTRAZOR_API_KEY']).topics article.body
-    return if topics == nil
+    return unless topics
 
     topics.first(5).each do |topic|
       tag = upsert_tag_by_name topic["label"]
