@@ -55,7 +55,6 @@ class ArticlesController < ApplicationController
   private
 
   def generate_tags(article)
-    byebug
     topics = Textrazor::Client.new(key: ENV['TEXTRAZOR_API_KEY']).topics article.body
     return if topics == nil
 
