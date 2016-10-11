@@ -1,7 +1,7 @@
 <div class="container article-block">
   <div class="article-title">
     <h1><%= @article.title %></h1>
-    Posted at: <%= display_time_created(@article) %> (UTC)
+    Posted at: <%= display_time_created(@article) %> 
   </div>
   <%= render partial: 'body', locals: {article: @article} %>
 

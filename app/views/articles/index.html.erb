@@ -9,7 +9,7 @@
         </div>
         <%= render partial: "body", locals: {article: article} %>
         <div class="article-options" >
-          Posted at: <%= display_time_created(article) %> (UTC) | 
+          Posted at: <%= display_time_created(article) %> | 
           <% if admin? %>
             <%= link_to 'Edit', edit_article_path(article) %> |
             <%= link_to 'Delete', article_path(article), method: :delete %> |
