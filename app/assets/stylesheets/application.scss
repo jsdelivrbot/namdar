@@ -17,6 +17,15 @@ textarea {
   padding-bottom: 50px;
 }
 
+.comment-title-right {
+  float: right !important;
+  font-weight: normal;
+}
+
+.delete-icon {
+  color: #bb2727;
+}
+
 .comments-section {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

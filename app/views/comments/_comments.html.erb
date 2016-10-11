@@ -4,15 +4,17 @@
     <div class="panel panel-default">
       <div class="panel-heading comment-author">
         <%= c.commenter %>
+        <div class="comment-title-right">
+          <%= time_ago_in_words(c.created_at) + ' ago' %>
+          <% if admin? %>
+            <%= link_to [c.article, c], method: :delete  do %>
+              <span class="glyphicon glyphicon-remove delete-icon"></span>
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="panel-body comment-body">
         <%= c.comment_text %>
-
-        <% if admin? %>
-          <div class="text-right">
-            <%= link_to 'Delete', [c.article, c], method: :delete %>
-          </div>
-        <% end %>
       </div>
     </div>
   <% end %>
