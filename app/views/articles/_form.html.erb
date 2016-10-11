@@ -16,5 +16,17 @@
     <%= f.text_area :body, {class: "form-control", id: "content-editor"} %></br>
   </div>
 
+  <div class="form-group article-options">
+    <label>Auto Tag:</label>
+    <label class="radio-inline">
+      <%= radio_button_tag :autotag, "true" %>
+      On
+    </label>
+    <label class="radio-inline">
+      <%= radio_button_tag :autotag, "false", :checked => "true"%>
+      Off
+    </label>
+  </div>
+
   <button type="submit" class="btn btn-primary">Save</button>
 <% end %>

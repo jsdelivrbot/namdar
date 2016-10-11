@@ -23,14 +23,15 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 #gem 'simple_form'
+gem 'rollbar'
 
 group :production do
   gem 'newrelic_rpm'
   gem 'airbrake'
-  gem 'rollbar'
 end
 
 group :development, :test do
+  gem 'capistrano', '~>3.6'
   gem 'byebug'
   gem 'rubocop'
   gem 'scss_lint', require: false

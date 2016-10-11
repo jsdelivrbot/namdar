@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(params.require(:article).permit(:title, :body, :markdown))
     @article.save
 
-    generate_tags @article
+    generate_tags @article if params[:autotag] == "true"
 
     redirect_to article_path(@article)
   end
@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.update(params.require(:article).permit(:title, :body, :markdown))
 
-    generate_tags @article
+    generate_tags @article if params[:autotag] == "true"
 
     redirect_to article_path
   end
@@ -55,8 +55,8 @@ class ArticlesController < ApplicationController
   private
 
   def generate_tags(article)
-    topics = Textrazor::Client.new(key: Rails.application.secrets.textrazor_api_key).topics article.body
-    return if topics == nil
+    topics = Textrazor::Client.new(key: ENV['TEXTRAZOR_API_KEY']).topics article.body
+    return unless topics
 
     topics.first(5).each do |topic|
       tag = upsert_tag_by_name topic["label"]

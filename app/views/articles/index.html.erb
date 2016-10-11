@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= t("blog_name") %></h1>
+  <h1><%= ENV['BLOG_NAME'] %></h1>
 
   <div id="article-list">
     <% @articles.each do |article| %>
@@ -9,10 +9,12 @@
         </div>
         <%= render partial: "body", locals: {article: article} %>
         <div class="article-options" >
+          Posted: <%= display_time_created(article) %> | 
           <% if admin? %>
             <%= link_to 'Edit', edit_article_path(article) %> |
-            <%= link_to 'Delete', article_path(article), method: :delete %>
+            <%= link_to 'Delete', article_path(article), method: :delete %> |
           <% end %>
+          <%= link_to "Comments [#{article.comments_count}]", article_path(article) %>
         </div>
       </div>
     <% end %>
