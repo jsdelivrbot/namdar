@@ -2,6 +2,8 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags
 
+  enum status: [ :published, :deleted ]
+
   def add_tag(tag)
     return if tag == nil or self.tags.include? tag
 

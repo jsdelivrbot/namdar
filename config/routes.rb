@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
     get 'remove_tag/:id', to: 'articles#remove_tag', as: 'remove_tag'
+    get 'delete', on: :member
   end
 
   resources :tags

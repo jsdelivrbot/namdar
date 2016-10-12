@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :require_admin, except: [:index, :show]
 
   def index
-    @articles = Article.all.order(:created_at).reverse_order
+    @articles = Article.published.order(:created_at).reverse_order
   end
 
   def show
@@ -38,8 +38,15 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
+    article = Article.find(params[:id])
+    article.destroy
+
+    redirect_to articles_path
+  end
+
+  def delete
+    article = Article.find(params[:id])
+    article.deleted!
 
     redirect_to articles_path
   end

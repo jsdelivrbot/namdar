@@ -9,7 +9,7 @@
     <%= render partial: 'tags/list', locals: {article: @article} %>
     <% if admin? %>
       <%= link_to 'Edit', edit_article_path %>
-      | <%= link_to 'Delete', article_path, method: :delete %>
+      | <%= link_to 'Delete', delete_article_path %>
     <% end %>
   </div>
 </div>
