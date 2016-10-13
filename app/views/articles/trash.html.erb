@@ -1,0 +1,16 @@
+<div class="container">
+  <h2><span class="glyphicon glyphicon-trash"></span>   Trash</h2>
+  <ul class="list-group">
+    <% @articles.each do |article| %>
+      <li class="list-group-item">
+        <%= link_to article_path(article), method: :delete, class: "delete-icon" do %>
+          <span class="glyphicon glyphicon-remove"></span>
+        <% end %> | 
+        <%= link_to recover_article_path(article), class: "recover-icon" do %>
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+        <% end %> |
+        <%= link_to article.title, article_path(article)%>
+      </li>
+    <% end %>
+  </ul>
+</div>

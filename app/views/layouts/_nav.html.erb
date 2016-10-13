@@ -30,6 +30,12 @@
               New Article
             <% end %>
           </li>
+          <li>
+            <%= link_to trash_path do %>
+              <span class="glyphicon glyphicon-trash"></span>
+              Trash
+            <% end %>
+          </li>
         <% end %>
 
         <% if logged_in? %>
