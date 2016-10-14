@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'mail-agent@horvo.me'
+  default from: 'liven@horvo.me'
   layout 'mailer'
 end
