@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
   before_action :require_admin, except: [:create]
 
   def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    article = Article.find(params[:article_id])
+    comment = article.comments.create(comment_params)
 
-    redirect_to article_path(@article)
+    AdminMailer.new_comment_email(article, comment, get_admin_email).deliver_now
+
+    redirect_to article_path(article)
   end
 
   def destroy
@@ -20,5 +22,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:commenter, :comment_text)
+  end
+
+  def get_admin_email
+    User.where(group: "admin").first.email
   end
 end
