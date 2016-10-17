@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get 'recover', on: :member
   end
   get 'trash', to: 'articles#trash'
+  get 'comments', to: 'comments#all_comments'
+  delete 'comment/:id', to: 'comments#destroy'
 
   resources :tags
 

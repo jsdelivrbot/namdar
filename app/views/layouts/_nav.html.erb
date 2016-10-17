@@ -36,6 +36,12 @@
               Trash
             <% end %>
           </li>
+          <li>
+            <%= link_to comments_path do %>
+              <span class="glyphicon glyphicon-comment"></span>
+              Comments
+            <% end %>
+          </li>
         <% end %>
 
         <% if logged_in? %>

@@ -10,12 +10,20 @@ class CommentsController < ApplicationController
     redirect_to article_path(article)
   end
 
-  def destroy
-    @article = Article.find(params[:article_id])
-    @comment = Comment.find(params[:id])
-    @comment.destroy
+  def all_comments
+    @comments = Comment.all.order(:created_at).reverse_order
+  end
 
-    redirect_to article_path(@article)
+  def destroy
+    article = Article.find(params[:article_id]) if params[:article_id]
+    comment = Comment.find(params[:id])
+    comment.destroy
+
+    if article
+      redirect_to article_path(@article)
+    else
+      redirect_to comments_path
+    end
   end
 
   private
