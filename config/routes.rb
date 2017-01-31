@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
     get 'remove_tag/:id', to: 'articles#remove_tag', as: 'remove_tag'
+    get 'delete', on: :member
+    get 'recover', on: :member
   end
+  get 'trash', to: 'articles#trash'
+  get 'comments', to: 'comments#all_comments'
+  delete 'comment/:id', to: 'comments#destroy'
 
   resources :tags
 

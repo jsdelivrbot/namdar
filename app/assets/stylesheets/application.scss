@@ -1,6 +1,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@media (max-width: 450px) {
+  .container {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 450px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+}
+
 textarea {
   resize: none;
 }
@@ -26,12 +44,12 @@ textarea {
   color: #bb2727;
 }
 
-.comments-section {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.recover-icon {
+  color: #1a9c1a;
 }
 
-.container {
-  max-width: 970px;
+.comments-section {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .article-block {

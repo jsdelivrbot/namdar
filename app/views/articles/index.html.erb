@@ -9,10 +9,10 @@
         </div>
         <%= render partial: "body", locals: {article: article} %>
         <div class="article-options" >
-          Posted: <%= display_time_created(article) %> | 
+          Posted: <%= display_time_created(article) %> |
           <% if admin? %>
             <%= link_to 'Edit', edit_article_path(article) %> |
-            <%= link_to 'Delete', article_path(article), method: :delete %> |
+            <%= link_to 'Delete', delete_article_path(article) %> |
           <% end %>
           <%= link_to "Comments [#{article.comments_count}]", article_path(article) %>
         </div>

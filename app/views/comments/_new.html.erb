@@ -5,6 +5,11 @@
     </div>
   </div>
   <div class="panel-body new-comment-panel">
+    <% if flash[:danger] %>
+      <div class="error-message">
+        <%= flash[:danger] %></br>
+      </div>
+    <% end %>
     <%= form_for([@article, @article.comments.build]) do |f| %>
       <div class="form-group">
         <%= f.text_field :commenter, {placeholder: "Commenter", class: "form-control"} %>

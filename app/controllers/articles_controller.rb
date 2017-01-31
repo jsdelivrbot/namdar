@@ -4,11 +4,12 @@ class ArticlesController < ApplicationController
   before_action :require_admin, except: [:index, :show]
 
   def index
-    @articles = Article.all.order(:created_at).reverse_order
+    @articles = Article.published.order(:created_at).reverse_order
   end
 
   def show
     @article = Article.find(params[:id])
+    redirect_to articles_path unless @article
   end
 
   def new
@@ -17,6 +18,7 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    redirect_to articles_path unless @article
   end
 
   def create
@@ -29,17 +31,27 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
-    @article.update(params.require(:article).permit(:title, :body, :markdown))
+    article = Article.find(params[:id])
+    return unless article
+    article.update(params.require(:article).permit(:title, :body, :markdown))
 
-    generate_tags @article if params[:autotag] == "true"
+    generate_tags article if params[:autotag] == "true"
 
     redirect_to article_path
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
+    article = Article.find(params[:id])
+    article.destroy
+
+    redirect_to articles_path
+  end
+
+  def delete
+    article = Article.find(params[:id])
+    return unless article
+
+    article.deleted!
 
     redirect_to articles_path
   end
@@ -48,6 +60,18 @@ class ArticlesController < ApplicationController
     article = Article.find(params[:article_id])
     tag = Tag.find(params[:id])
     article.remove_tag(tag)
+
+    redirect_to article_path(article)
+  end
+
+  def trash
+    @articles = Article.deleted.order(:created_at).reverse_order
+  end
+
+  def recover
+    article = Article.find(params[:id])
+    redirect_to trash_path unless article
+    article.published!
 
     redirect_to article_path(article)
   end

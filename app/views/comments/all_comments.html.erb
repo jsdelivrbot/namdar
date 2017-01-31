@@ -1,0 +1,13 @@
+<div class="container">
+  <h2><span class="glyphicon glyphicon-comment"></span>   Comments</h2>
+  <ul class="list-group">
+    <% @comments.each do |comment| %>
+      <li class="list-group-item">
+        <%= link_to comment.commenter, article_path(comment.article_id) %>
+        <%= link_to "comment/#{comment.id}", method: :delete do %>
+          <span class="glyphicon glyphicon-remove comment-title-right delete-icon"></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
