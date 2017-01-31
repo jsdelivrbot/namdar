@@ -1,11 +1,19 @@
+require 'akismet'
+
 class CommentsController < ApplicationController
   before_action :require_admin, except: [:create]
 
   def create
     article = Article.find(params[:article_id])
+    if spam?
+      flash[:danger] = 'You are spam! aren\'t you?'
+      redirect_to article_path(article)
+      return
+    end
+
     comment = article.comments.create(comment_params)
 
-    AdminMailer.new_comment_email(article, comment, get_admin_email).deliver_now
+    AdminMailer.new_comment_email(article, comment, admin_email).deliver_now
 
     redirect_to article_path(article)
   end
@@ -20,7 +28,7 @@ class CommentsController < ApplicationController
     comment.destroy
 
     if article
-      redirect_to article_path(@article)
+      redirect_to article_path(article)
     else
       redirect_to comments_path
     end
@@ -32,7 +40,17 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:commenter, :comment_text)
   end
 
-  def get_admin_email
-    User.where(group: "admin").first.email
+  def admin_email
+    User.where(group: 'admin').first.email
+  end
+
+  def spam?
+    client = Akismet::Client.new(url: ENV['AKISMET_URL'], blog: ENV['AKISMET_BLOG'])
+    opts = {
+      referer: request.referer,
+      permalink: request.url,
+      comment_content: params[:comment][:comment_text]
+    }
+    client.check(request.ip, request.user_agent, opts)
   end
 end
